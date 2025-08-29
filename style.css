@@ -1,0 +1,208 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f6fa;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  font-size: 22px;
+  font-weight: bold;
+  animation: fadeDown 1s ease-in-out;
+}
+
+.cart-icon {
+  position: relative;
+  cursor: pointer;
+  font-size: 22px;
+}
+.cart-count {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background: red;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 50%;
+}
+
+/* Responsive Grid */
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.product {
+  background: white;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  animation: fadeUp 0.8s ease-in-out;
+  max-width: 320px;
+  margin: auto;
+  cursor: pointer;
+}
+
+.product:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.product img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: contain;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+.btn {
+  display: inline-block;
+  margin: 6px 4px;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: transform 0.2s, background 0.3s;
+}
+
+.btn-buy { background: #2575fc; color: white; }
+.btn-buy:hover { background: #1b5edb; transform: scale(1.05); }
+
+.btn-details { background: #6a11cb; color: white; }
+.btn-details:hover { background: #540fa6; transform: scale(1.05); }
+
+.btn-cart { background: #00b894; color: white; }
+.btn-cart:hover { background: #009874; transform: scale(1.05); }
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 12px;
+  max-width: 500px;
+  width: 90%;
+  animation: slideUp 0.5s ease-in-out;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  max-height: 80vh;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 5;
+}
+.close { font-size: 24px; font-weight: bold; cursor: pointer; color: #333; }
+.close:hover { color: red; }
+
+.modal-body {
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.modal-body img { max-width: 100%; border-radius: 12px; margin-bottom: 15px; }
+
+/* Cart Sidebar */
+.cart-sidebar {
+  position: fixed;
+  top: 0; right: -400px;
+  width: 320px;
+  height: 100%;
+  background: #fff;
+  box-shadow: -4px 0 8px rgba(0,0,0,0.2);
+  transition: right 0.3s ease-in-out;
+  z-index: 1200;
+  padding: 20px;
+  overflow-y: auto;
+}
+.cart-sidebar.open { right: 0; }
+
+/* Cart Sidebar Header with Close Button */
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.close-cart {
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #333;
+  transition: color 0.2s;
+}
+.close-cart:hover {
+  color: red;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 12px 0;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 8px;
+  font-size: 14px;
+}
+
+.qty-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.qty-btn {
+  background: #eee;
+  border: none;
+  padding: 4px 8px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 14px;
+}
+.qty-btn:hover { background: #ddd; }
+
+.cart-total {
+  margin-top: 15px;
+  font-weight: bold;
+  font-size: 16px;
+  text-align: right;
+}
+
+/* Animations */
+@keyframes fadeUp { from {opacity: 0; transform: translateY(30px);} to {opacity: 1; transform: translateY(0);} }
+@keyframes fadeDown { from {opacity: 0; transform: translateY(-30px);} to {opacity: 1; transform: translateY(0);} }
+@keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
+@keyframes slideUp { from {transform: translateY(50px); opacity: 0;} to {transform: translateY(0); opacity: 1;} }
